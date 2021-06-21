@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#Bash script that displays Holberton School 10 times.
+#Bash script that displays Holberton School.
 
 for ((i=1; i<= 10; a++))
 do
