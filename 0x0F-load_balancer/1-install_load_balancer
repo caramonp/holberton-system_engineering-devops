@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# This script configures a new Ubuntu machine.
+path=/etc/default/haproxy
+path1=/etc/haproxy/haproxy.cfg
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y install haproxy
+sudo sed -i '/ENABLED/d' $path
+sudo echo "ENABLED=1" | sudo tee -a $path
+sudo echo "
+frontend my_front
+    bind *:80
+    default_backend my_back
+backend my_back
+    balance roundrobin
+    server 2966-web-01 35.237.245.220
+    server 2966-web-02 52.207.242.133
+    " | sudo tee -a $path1
+sudo service haproxy restart
