@@ -16,12 +16,12 @@ if __name__ == "__main__":
     users_id = requests.get(user_url.format(sys.argv[1]))
     response_id = users_id.json()
 
-    user_name = response_id.get('name')
+    user_name = response_id.get('username')
     user_id = response_id.get('id')
 
     with open('{}.csv'.format(sys.argv[1]), mode='w') as csv_id:
-        j = csv.writer(csv_id, quoting=csv.QUOTE_ALL)
+        file = csv.writer(csv_id, quoting=csv.QUOTE_ALL)
 
         for info in response:
-            j.writerow([user_id, user_name, info.get('completed'),
+            file.writerow([user_id, user_name, info.get('completed'),
                         info.get('title')])
