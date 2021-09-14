@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     user_name = response_id.get('name')
     user_id = response_id.get('id')
-    
+
     todos_len = 0
     todos_arr = []
     for i in response:
