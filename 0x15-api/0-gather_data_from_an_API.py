@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""[ given employee ID, returns information]
+"""
 import requests
 import sys
 
@@ -15,16 +17,18 @@ if __name__ == "__main__":
 
     user_name = response_id.get('name')
     user_id = response_id.get('id')
+    tasks = []
+    done_tasks = 0
+    total_tasks = 0
 
-    todos_len = 0
-    todos_arr = []
-    for i in response:
-        if i.get("completed"):
-            todos_arr.append(i)
-            todos_len += 1
+    for info in response:
+        if user_id == info.get('userId'):
+                if info.get('completed') is True:
+                    done_tasks += 1
+                    tasks.append(info.get('title'))
+                total_tasks += 1
+        print("Employee {} is done with tasks({}/{}):"
+              .format(user_name, done_tasks, total_tasks))
 
-    print("Employee {} is done with tasks({}/{}):".format(
-          user_name, todos_len, len(response)))
-
-    for i in todos_arr:
-        print("\t {}".format(i.get("title")))
+        for title in tasks:
+            print('\t', title)
