@@ -24,4 +24,4 @@ if __name__ == "__main__":
 
         for info in response:
             file.writerow([user_id, user_name, info.get('completed'),
-                        info.get('title')])
+                          info.get('title')])
