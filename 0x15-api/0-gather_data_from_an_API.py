@@ -3,11 +3,11 @@ import requests
 import sys
 
 
-def __init__(self):
+if __name__ == "__main__":
 
     todos_url = 'https://jsonplaceholder.typicode.com/todos/'
     response_todos = requests.get(todos_url)
-    response_todos.json()
+    response = response_todos.json()
 
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'
     users_id = requests.get(user_url.format(sys.argv[1]))
@@ -19,7 +19,7 @@ def __init__(self):
     done_tasks = 0
     total_tasks = 0
 
-    for info in response_id:
+    for info in response:
         if user_id == info.get('userId'):
                 if info.get('completed') is True:
                     done_tasks += 1
