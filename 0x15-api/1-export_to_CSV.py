@@ -8,8 +8,8 @@ import sys
 
 if __name__ == "__main__":
 
-    todos_url = 'https://jsonplaceholder.typicode.com/todos/'
-    response_todos = requests.get(todos_url)
+    todos_url = 'https://jsonplaceholder.typicode.com/todos?userId={}'
+    response_todos = requests.get(todos_url.format(sys.argv[1]))
     response = response_todos.json()
 
     user_url = 'https://jsonplaceholder.typicode.com/users/{}'
